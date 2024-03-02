@@ -9,17 +9,16 @@ const loadData = (isSorted) => {
 
 
         if(isSorted) {
+            
             data.sort((a, b) => {
-                const first = a.published_in
-                const second = b.published_in
-                const converted1 = parseInt(first.slice(5,9))
-                const converted2 = parseInt(second.slice(5))
-                console.log(converted1)
-                return converted2 - converted1;
+                const first = new Date(a.published_in)
+                const second = new Date(b.published_in);
+                return first-second;
             })
+        
         }
 
-
+        
         itemContainer.textContent = '';
 
         data.forEach(item => {
@@ -120,3 +119,5 @@ const showDetails = (data) => {
 
     OpenModals.showModal()
 }
+
+
